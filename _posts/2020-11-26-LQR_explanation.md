@@ -1,11 +1,11 @@
 ---
-title: "Linear Quadratic Regulator (LQR) 설명 및 구현"
+title     : "Linear Quadratic Regulator (LQR) 설명 및 구현"
 categories: 
   - optimal control
-toc: true
-toc_sticky: true
-layout: single
-classes: wide
+toc       : true
+toc_sticky: false
+layout    : single
+classes   : wide
 ---
 
 ## Background
