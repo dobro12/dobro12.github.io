@@ -4,6 +4,8 @@ categories:
   - optimal control
 toc: true
 toc_sticky: true
+layout: single
+classes: wide
 ---
 
 ## Background
