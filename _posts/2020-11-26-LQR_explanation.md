@@ -3,11 +3,12 @@ title: "Linear Quadratic Regulator (LQR) 설명 및 구현"
 categories: 
   - optimal control
 toc: true
+toc_sticky: true
 ---
 
-# background
+## Background
 
-## optimality condition
+### optimality condition
 
 - KKT conditions은 Nonconvex problem의 경우, optimality를 위한 필요조건이고, convex problem의 경우, optimality를 위한 필요충분조건이다.
 - Lagrangian function : $L(x, \mu, \lambda) := f(x) + \mu^Tg(x) + \lambda^Th(x)$
@@ -20,9 +21,9 @@ toc: true
 
     4. $$\sum_{i} \mu_i g_i(x^*) = 0$$
 
-## Hamiltonian Matrix
+### Hamiltonian Matrix
 
 -  
 
-# discrete time & finite horizon
+## discrete time & finite horizon
 
