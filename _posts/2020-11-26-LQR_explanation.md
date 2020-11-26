@@ -176,7 +176,7 @@ void get_action(int X_DIM, int U_DIM, double* init_x, int time_horizon, double* 
 
 - Openai Gym의 cartpole 환경을 사용하였으며, input을 x방향 force로 변형하였다.
 
-- ![result](https://github.com/dobro12/optimal_control/blob/master/LQR/result.png)
+- ![result](/assets/images/[LQR]result.png)
 
 ## Conclusion
 
