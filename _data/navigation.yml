@@ -10,3 +10,9 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+docs:
+  - title: Optimal Control
+    children:
+      - title: "Linear Quadratic Regulator"
+        url: /optimal_control/LQR_explanation/
