@@ -33,13 +33,19 @@
 
 <script type="text/x-mathjax-config">
    MathJax.Hub.Config({
-     extensions: ["tex2jax.js"],
-     jax: ["input/TeX", "output/HTML-CSS"],
+    extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+     jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
      tex2jax: {
        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
        processEscapes: true
      },
+     TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },     
      "HTML-CSS": { availableFonts: ["TeX"] }
    });
 </script>

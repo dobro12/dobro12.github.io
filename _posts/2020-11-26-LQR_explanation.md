@@ -59,4 +59,4 @@ x_0 =x_{\mathrm{init}}.$$
 
 여기서 구한 Lagrangian 을 KKT conditions에 적용하여 control을 구할 수 있다. 먼저 $x$와 $u$에 대한 1차 미분이 0이 나와야 한다.
 
-$$test$$
+$$test2$$
