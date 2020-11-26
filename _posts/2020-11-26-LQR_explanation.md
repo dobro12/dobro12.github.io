@@ -50,7 +50,7 @@ h_j(x) = 0, \forall j.$$
 s.t. \quad x_{i+1} = Ax_i + Bu_i, \; i = 0,1,...,N-1, \\
 x_0 =x_{\mathrm{init}}.$$
 
-- 만일 $x_{\mathrm{des}} \neq 0$ 또는 $u_{\mathrm{des}} \neq 0$ 인 경우라 하더라도, $x = \hat{x} - \hat{x}_{\mathrm{des}}, u = \hat{u} - \hat{u}_{\mathrm{des}}$ ($\hat{x}, \hat{u}$ 이 실제 state 및 input) 으로 치환하면 위의 식을 통해 control을 구할 수 있다.
+- 만일 $x_{\mathrm{des}} \neq 0$ 또는 $u_{\mathrm{des}} \neq 0$ 인 경우라 하더라도, $x = \hat{x} - \hat{x}_{\mathrm{des}}$, $u = \hat{u} - \hat{u}_{\mathrm{des}}$ ($\hat{x}, \hat{u}$ 이 실제 state 및 input) 으로 치환하면 위의 식을 통해 control을 구할 수 있다.
 
 ### Lagrangian Function 및 Hamiltonian Matrix
 
@@ -59,4 +59,8 @@ x_0 =x_{\mathrm{init}}.$$
 
 여기서 구한 Lagrangian 을 KKT conditions에 적용하여 control을 구할 수 있다. 먼저 $x$와 $u$에 대한 1차 미분이 0이 나와야 한다.
 
-$$test3$$
+$$test4$$
+
+$$
+x = \hat{x} - \hat{x}_{\mathrm{des}}, u = \hat{u} - \hat{u}_{\mathrm{des}}
+$$
