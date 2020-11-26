@@ -5,6 +5,7 @@ categories:
 toc       : true
 toc_sticky: true
 layout    : single
+classes   : custom_wide
 ---
 
 ## Background
