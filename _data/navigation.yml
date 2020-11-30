@@ -18,3 +18,7 @@ docs:
     children:
       - title: "Linear Quadratic Regulator"
         url: /optimal_control/LQR_explanation/
+  - title: Web
+    children:
+      - title: "NGINX를 이용한 프록시 서버 구축"
+        url: /web/NGINX_proxy_server/
