@@ -22,3 +22,7 @@ docs:
     children:
       - title: "NGINX를 이용한 프록시 서버 구축"
         url: /web/NGINX_proxy_server/
+  - title: Ubuntu
+    children:
+      - title: "Ubuntu 18.04에 Kakao Talk 설치"
+        url: /ubuntu/kakao_talk_install/
