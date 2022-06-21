@@ -1,11 +1,9 @@
 ---
-title     : "Linear Quadratic Regulator (LQR) 설명 및 구현"
-categories: 
-  - optimal_control
-toc       : true
-toc_sticky: true
-layout    : single
-classes   : custom_wide
+title       : "Linear Quadratic Regulator (LQR) 설명 및 구현"
+tags        : [optimal_control]
+style       : fill # fill / border (choose one only)
+color       : info # primary / secondary / success / danger / warning / info / light / dark (choose one only)
+description : # Write post description here, or it will be the first 25 words of the post's body.
 ---
 
 ## Background

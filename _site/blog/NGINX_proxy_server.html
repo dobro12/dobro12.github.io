@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NGINX를 이용한 프록시 (forward proxy) 서버 구축 및 파이썬 활용">
+  <meta property="og:description" content="I love robots :robot: and          reinforcement learning.">
+  <meta property="og:image" content="assets/dobro.jpg">
+
+  <title>NGINX를 이용한 프록시 (forward proxy) 서버 구축 및 파이썬 활용</title>
+  <meta name="description" content="I love robots :robot: and          reinforcement learning.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Dohyeong Kim</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+<a class="nav-item nav-link " href="/publications/">Publications</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>NGINX를 이용한 프록시 (forward proxy) 서버 구축 및 파이썬 활용</b></h1>
+
+<p class="post-metadata text-muted">
+  01 December 2020 -  
+  <b>3 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#web">
+      <span class="tag badge badge-pill text-primary border border-primary">web</span>
+    </a>
+    </p>
+
+<p>IP 우회 또는 내부망을 외부망과 연결하는데 필요한 프록시 서버의 구축 방법을 소개한다.</p>
+
+<h2 id="nginx-설치">NGINX 설치</h2>
+
+<p>NGINX는 Appache와 같은 웹 서버 애플리케이션중에 하나이다. 가볍고 사용법이 간편하여 NGINX를 사용해 프록시 서버를 구현하려 한다. 설치 환경은 ubuntu (16.04 또는 18.04)에서 진행한다.</p>
+
+<h3 id="install-dependencies-and-source-file">Install Dependencies and Source File</h3>
+
+<p>먼저 아래의 dependency들을 설치한다.</p>
+
+<ul>
+  <li>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  sudo apt-get update
+  sudo apt-get install gcc
+  sudo apt-get install cmake
+  sudo apt-get install libpcre3 libpcre3-dev
+  sudo apt-get install zlib1g zlib1g-dev
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>위의 dependency들을 다 받았으면, wget 명령어를 통해 source file을 받아준다. 추가로 proxy 모듈을 위해 아래와 같이 git 저장소 또한 받아준다.</p>
+
+<ul>
+  <li>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  wget http://nginx.org/download/nginx-1.17.0.tar.gz
+  tar -xzvf nginx-1.17.0.tar.gz
+  git clone https://github.com/chobits/ngx_http_proxy_connect_module.git
+  cd nginx-1.17.0/
+  patch -p1 &lt; ../ngx_http_proxy_connect_module/patch/proxy_connect_rewrite_101504.patch
+  ./configure --add-module=../ngx_http_proxy_connect_module
+  sudo make &amp;&amp; sudo make install
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="set-command-and-service-file">Set Command and Service File</h3>
+
+<p>위에서 nginx를 설치했으면, 커맨드 실행을 위해 아래와 같이 커맨드를 등록할 수 있다.</p>
+
+<ul>
+  <li>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  cd /usr/bin
+  sudo ln -s /usr/local/nginx/sbin/nginx nginx
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>이제 system 관리자를 통해 nginx를 다룰 수 있도록 설정 파일을 정의해야한다.
+아래와 같은 명령어를 설정 파일을 연다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sudo nano /etc/systemd/system/nginx.service</code></li>
+</ul>
+
+<p>그 다음 아래의 내용을 기입해 저장한다.</p>
+
+<ul>
+  <li>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  [Unit]
+  Description=nginx - high performance web server
+  Documentation=https://nginx.org/en/docs/
+  After=network-online.target remote-fs.target nss-lookup.target
+  Wants=network-online.target
+
+  [Service]
+  Type=forking
+  ExecStartPre=/usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf
+  ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+  ExecReload=/bin/kill -s HUP $MAINPID
+  ExecStop=/bin/kill -s TERM $MAINPID
+
+  [Install]
+  WantedBy=multi-user.target
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>위에서 <code class="language-plaintext highlighter-rouge">ExecStartPre</code> 와 같이 경로를 지정하는 부분에서는 실제 nginx가 설치된 위치로 바꿔주어 적용할 수 있다.</p>
+
+<p>그 뒤에 아래의 명령어로 system을 통해 nginx 등록 후, 서비스를 켜고 끌 수 있다.</p>
+
+<ul>
+  <li>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  # register service
+  sudo systemctl enable nginx.service
+  # start NGINX
+  sudo systemctl start nginx.service
+
+  # check NGINX is running 
+  sudo systemctl status nginx.service
+  # or
+  ps aux | grep nginx
+  # or
+  netstat -tlnp
+
+  # to restart
+  sudo systemctl restart nginx.service
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="set-nginx-configuration-file">Set NGINX configuration File</h3>
+
+<p>위에서 nginx를 가동하였다. 이제 nginx.conf 파일을 이용해 우리가 원하는 프록시 (forward proxy) 서버가 동작되게끔 설정을 바꿀 것이다. 다른 서버설정에 비해 매우 간단하여 빠르게 구축할 수 있다.</p>
+
+<p>먼저 아래의 명령어를 통해 nginx.conf 파일을 연다.</p>
+
+<ul>
+  <li>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  cd /usr/local/nginx/conf
+  sudo nano nginx.conf
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>그 후 아래의 내용을 기입한다.</p>
+
+<ul>
+  <li>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  worker_processes  1;
+  events {
+      worker_connections  1024;
+  }
+  http {
+      keepalive_timeout  65;
+      server {
+          listen       1234; # 열고싶은 포트
+          server_name  "1.2.3.4"; # 프록시 서버의 도메인 또는 IP 주소
+          access_log  logs/access.log;
+          # dns resolver used by forward proxying
+          resolver                       8.8.8.8;
+
+          # forward proxy for CONNECT request
+          proxy_connect;
+          proxy_connect_allow            443 563;
+          proxy_connect_connect_timeout  10s;
+          proxy_connect_read_timeout     10s;
+          proxy_connect_send_timeout     10s;
+          location / {
+              proxy_pass $scheme://$http_host$uri$is_args$args;
+          }
+      }
+  }
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>그 뒤에 다음 명령어를 통해 conf 파일에 오류가 없는지 확인할 수 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sudo nginx -t</code></li>
+</ul>
+
+<p>만약 “OK” 라는 문구가 포함된 2줄의 출력문이 나온다면 오류가 없는 것이다. 오류가 없음을 확인 했으면, 아래와 같이 nginx 서비스를 재시작한다. 그렇게되면 프록시 서버 구축이 완료된다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sudo systemctl restart nginx.service</code></li>
+</ul>
+
+<h3 id="set-firewall-configuration-on-google-cloud-platform-gcp">Set Firewall Configuration on Google Cloud Platform (GCP)</h3>
+
+<p>만일 Google Cloud Platform (GCP)나 Amazon Web Service (AWS)를 사용해 프록시 서버를 구축한다면, 위에서 설정한 프록시 서버의 포트 번호를 방화벽에서 열어줘야한다. GCP의 경우, 아래와 같이 설정할 수 있다.</p>
+
+<ul>
+  <li>
+    <p><img src="/assets/images/NGINX_proxy_server/1.png" alt="1"></p>
+  </li>
+  <li>
+    <p>GCP console 페이지의 compute engine 탭에 들어가면 위와 같은 항목들이 있다. 이중에 “방화벽 규칙 설정”을 클릭한다.</p>
+  </li>
+  <li>
+    <p><img src="/assets/images/NGINX_proxy_server/2.png" alt="2"></p>
+  </li>
+  <li>
+    <p>그럼 “방화벽 규칙 만들기”를 들어간 후,</p>
+  </li>
+  <li>
+    <p><img src="/assets/images/NGINX_proxy_server/3.png" alt="3"></p>
+  </li>
+  <li>
+    <p>위와 같이 규칙을 생성한다.</p>
+  </li>
+</ul>
+
+<h3 id="test-the-proxy-server-with-python">Test the proxy server with python</h3>
+
+<p>아주 간단하게 <strong>requests</strong>
+ 모듈을 사용하여 프록시 서버작동을 테스트할 수 있다.</p>
+
+<ul>
+  <li>
+    <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">requests</span>
+
+  <span class="n">url</span> <span class="o">=</span> <span class="s">"원하는도메인"</span>
+  <span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'http'</span><span class="p">:</span> <span class="s">'http://"프록시서버의 도메인이름 또는 IP주소":"설정한 포트번호"'</span><span class="p">,</span>
+  <span class="s">'https'</span><span class="p">:</span> <span class="s">'http://"프록시서버의 도메인이름 또는 IP주소":"설정한 포트번호"'</span><span class="p">,</span>
+  <span class="p">}</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">proxies</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Dohyeong Kim</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center">
+<a class="social mx-1" href="mailto:dohyeong.kim@rllab.snu.ac.kr" style="color: #6c757d" onmouseover="this.style.color='#db4437'" onmouseout="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1" href="https://www.github.com/dobro12" style="color: #6c757d" onmouseover="this.style.color='#333333'" onmouseout="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1" href="https://www.twitter.com/dohyeong_kim_rl" style="color: #6c757d" onmouseover="this.style.color='#1da1f2'" onmouseout="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a>
+
+</div>
+<small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- MathJax -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script> 
+</body>
+
+</html>

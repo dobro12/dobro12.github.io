@@ -1,0 +1,23 @@
+- name: TensorFlow
+  percentage: 95
+  color: danger
+
+- name: PyTorch
+  percentage: 90
+  color: 
+
+- name: ROS
+  percentage: 90
+  color: 
+
+- name: ReactJS
+  percentage: 60
+  color: secondary
+
+- name: SolidWorks
+  percentage: 60
+  color: secondary
+
+- name: MuJoCo (Simulator)
+  percentage: 95
+  color: danger

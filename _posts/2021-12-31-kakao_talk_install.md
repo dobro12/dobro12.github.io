@@ -1,11 +1,9 @@
 ---
 title     : "Ubuntu 18.04에 Kakao Talk 설치"
-categories: 
-  - ubuntu
-toc       : true
-toc_sticky: true
-layout    : single
-classes   : custom_wide
+tags        : [ubuntu]
+style       : fill # fill / border (choose one only)
+color       : info # primary / secondary / success / danger / warning / info / light / dark (choose one only)
+description : # Write post description here, or it will be the first 25 words of the post's body.
 ---
 
 Ubuntu 18.04에 카카오톡 설치 방법 입니다.

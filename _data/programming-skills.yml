@@ -1,0 +1,15 @@
+- name: Python
+  percentage: 95
+  color: danger
+
+- name: C/C++
+  percentage: 85
+  color:
+
+- name: MATLAB
+  percentage: 60
+  color: secondary
+
+- name: JavaScript
+  percentage: 60
+  color: secondary

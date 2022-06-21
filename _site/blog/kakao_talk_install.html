@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ubuntu 18.04에 Kakao Talk 설치">
+  <meta property="og:description" content="I love robots :robot: and          reinforcement learning.">
+  <meta property="og:image" content="assets/dobro.jpg">
+
+  <title>Ubuntu 18.04에 Kakao Talk 설치</title>
+  <meta name="description" content="I love robots :robot: and          reinforcement learning.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Dohyeong Kim</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+<a class="nav-item nav-link " href="/publications/">Publications</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>Ubuntu 18.04에 Kakao Talk 설치</b></h1>
+
+<p class="post-metadata text-muted">
+  31 December 2021 -  
+  <b>less than 1 min read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#ubuntu">
+      <span class="tag badge badge-pill text-primary border border-primary">ubuntu</span>
+    </a>
+    </p>
+
+<p>Ubuntu 18.04에 카카오톡 설치 방법 입니다.</p>
+
+<h2 id="install-wine">Install Wine</h2>
+
+<p>wine은 ubuntu에서 window프로그램(.exe)을 실행시켜주는 호환성 레이어(가상머신은 아니지만 윈도우 명령어를 우분투로 매핑시켜주는)이다.</p>
+
+<ul>
+  <li>
+    <p>reference: https://wiki.winehq.org/Ubuntu</p>
+  </li>
+  <li>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>dpkg <span class="nt">--add-architecture</span> i386
+  wget <span class="nt">-nc</span> https://dl.winehq.org/wine-builds/winehq.key
+  <span class="nb">sudo </span>apt-key add winehq.key
+  <span class="nb">sudo </span>add-apt-repository <span class="s1">'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'</span>
+  <span class="nb">sudo </span>apt update
+  <span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">--install-recommends</span> winehq-stable
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="install-winetricks">Install Winetricks</h2>
+
+<p>font 관련 문제발생을 막기 위해 winetricks을 사용할 수 있다.</p>
+
+<ul>
+  <li>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>winetricks
+winetricks corefonts
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="install-kakaotalk">Install KakaoTalk</h2>
+
+<p>카카오톡 홈페이지에서 윈도우 설치파일을 받고 영어버전으로 설치한다. 
+(한글버전으로 설치시 wine이 꼬여서 카카오톡 로그인 에러가 발생한다. 에러가 발생시, wine을 깔끔하게 삭제후 재설치해야함.)</p>
+
+<ul>
+  <li>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="c"># 다운로드:</span>
+  wget https://app-pc.kakaocdn.net/talk/win32/KakaoTalk_Setup.exe
+  <span class="c"># 설치:</span>
+  wine KakaoTalk_Setup.exe
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="execute-kakaotalk">Execute KakaoTalk</h2>
+
+<ul>
+  <li>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">cd</span> ~/.wine/drive_c/Program<span class="se">\ </span>Files<span class="se">\ \(</span>x86<span class="se">\)</span>/Kakao/KakaoTalk/
+  <span class="nv">LC_ALL</span><span class="o">=</span>ko_KR.utf8 wine KakaoTalk.exe
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="put-wines-system-tray-in-ubuntus-system-tray">Put Wine’s System Tray in Ubuntu’s System Tray</h2>
+
+<ul>
+  <li>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>apt-get <span class="nb">install </span>gnome-tweaks gnome-shell-extensions
+  <span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-f</span> gnome-shell-extension-top-icons-plus
+</code></pre></div>    </div>
+  </li>
+  <li>(아마 재부팅 필요) Tweaks &gt; Extentions &gt; Topicons Plus On</li>
+</ul>
+
+<h2 id="how-to-reset-wine">How to Reset Wine?</h2>
+
+<p>설치중에 wine이 꼬였다면, 설정 파일 모두 삭제후 재설치해야한다.</p>
+
+<ul>
+  <li>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">rm</span> <span class="nt">-Rf</span> <span class="nv">$HOME</span>/.wine<span class="k">*</span>
+  <span class="nb">rm</span> <span class="nt">-f</span>  <span class="nv">$HOME</span>/.local/share/mime/packages/x-wine-e<span class="k">*</span>
+  <span class="nb">rm</span> <span class="nt">-f</span>  <span class="nv">$HOME</span>/.local/share/mime/application/x-wine-<span class="k">*</span>
+  <span class="nb">rm</span> <span class="nt">-f</span>  <span class="nv">$HOME</span>/.local/share/icons/hicolor/<span class="k">*</span>/apps/application-x-wine-<span class="k">*</span>
+  <span class="nb">rm</span> <span class="nt">-f</span>  <span class="nv">$HOME</span>/.local/share/applications/wine-<span class="k">*</span>
+  <span class="nb">rm</span> <span class="nt">-f</span>  <span class="nv">$HOME</span>/.local/share/desktop-directories/wine-<span class="k">*</span>
+  <span class="nb">rm</span> <span class="nt">-f</span>  <span class="nv">$HOME</span>/.local/share/icons/hicolor/<span class="k">*</span>/apps/7765_<span class="k">*</span>
+  <span class="nb">rm</span> <span class="nt">-f</span>  <span class="nv">$HOME</span>/.config/menus/applications-merged/wine-<span class="k">*</span>
+  <span class="nb">sudo </span>apt purge wine<span class="k">*</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Dohyeong Kim</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center">
+<a class="social mx-1" href="mailto:dohyeong.kim@rllab.snu.ac.kr" style="color: #6c757d" onmouseover="this.style.color='#db4437'" onmouseout="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1" href="https://www.github.com/dobro12" style="color: #6c757d" onmouseover="this.style.color='#333333'" onmouseout="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1" href="https://www.twitter.com/dohyeong_kim_rl" style="color: #6c757d" onmouseover="this.style.color='#1da1f2'" onmouseout="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a>
+
+</div>
+<small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- MathJax -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script> 
+</body>
+
+</html>

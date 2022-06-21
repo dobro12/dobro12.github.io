@@ -1,0 +1,27 @@
+[
+  
+    {
+      "title"    : "Ubuntu 18.04에 Kakao Talk 설치",
+      "category" : "",
+      "tags"     : "ubuntu",
+      "url"      : "/blog/kakao_talk_install",
+      "date"     : "2021-12-31 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "NGINX를 이용한 프록시 (forward proxy) 서버 구축 및 파이썬 활용",
+      "category" : "",
+      "tags"     : "web",
+      "url"      : "/blog/NGINX_proxy_server",
+      "date"     : "2020-12-01 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Linear Quadratic Regulator (LQR) 설명 및 구현",
+      "category" : "",
+      "tags"     : "optimal_control",
+      "url"      : "/blog/LQR_explanation",
+      "date"     : "2020-11-26 00:00:00 +0900"
+    } 
+  
+]

@@ -1,11 +1,9 @@
 ---
-title     : "NGINX를 이용한 프록시 (forward proxy) 서버 구축 및 파이썬 활용"
-categories: 
-  - web
-toc       : true
-toc_sticky: true
-layout    : single
-classes   : custom_wide
+title       : "NGINX를 이용한 프록시 (forward proxy) 서버 구축 및 파이썬 활용"
+tags        : [web]
+style       : fill # fill / border (choose one only)
+color       : info # primary / secondary / success / danger / warning / info / light / dark (choose one only)
+description : # Write post description here, or it will be the first 25 words of the post's body.
 ---
 
 IP 우회 또는 내부망을 외부망과 연결하는데 필요한 프록시 서버의 구축 방법을 소개한다.
