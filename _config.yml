@@ -25,7 +25,7 @@ nav_exclude:                                            # The following paths ar
 ### Author Info ###
 author:
   name              : Dohyeong Kim
-  image             : assets/dobro.jpg # http://rllab.snu.ac.kr/people/dohyeong-kim/src/dobro.jpg
+  image             : http://rllab.snu.ac.kr/people/dohyeong-kim/src/dobro.jpg
   email             : dohyeong.kim@rllab.snu.ac.kr
   github            : dobro12
   twitter           : dohyeong_kim_rl
