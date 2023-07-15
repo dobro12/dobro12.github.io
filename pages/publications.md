@@ -19,6 +19,12 @@ weight: 1
 ---
 ### International Conference
 
+- Junseo Lee, Jaeseok Heo, **Dohyeong Kim**, Gunmin Lee, and Songhwai Oh, "Dual Variable Actor-Critic for Adaptive Safe Reinforcement Learning," in Proc. of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Oct. 2023.
+
+- Hogun Kee, Minjae Kang, **Dohyeong Kim**, Jaegoo Choy, and Songhwai Oh, "SDF-Based Graph Convolutional Q-Networks for Rearrangement of Multiple Objects," in Proc of the IEEE International Conference on Robotics and Automation (ICRA), May 2023.
+
+- Gunmin Lee, Wooseok Oh, Jeongwoo Oh, Seungyoun Shin, **Dohyeong Kim**, Jaeyeon Jeong, Sungjoon Choi, and Songhwai Oh "Semi-Supervised Imitation Learning with Mixed Qualities of Demonstrations for Autonomous Driving," in Proc. of the International Conference on Control, Automation and Systems (ICCAS), Nov. 2022. 
+
 - **Dohyeong Kim**\*, Jaeseok Heo*, and Songhwai Oh, "SafeTAC: Safe Tsallis Actor-Critic Reinforcement Learning for Safer Exploration," in Proc. of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Oct. 2022.
 
 - **Dohyeong Kim**, Yunho Kim, Kyungjae Lee, and Songhwai Oh, "Safety Guided Policy Optimization," in Proc. of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Oct. 2022.
