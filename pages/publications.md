@@ -19,6 +19,8 @@ weight: 1
 ---
 ### International Conference
 
+- **Dohyeong Kim**, Kyungjae Lee, and Songhwai Oh, "Trust Region-Based Safe Distributional Reinforcement Learning for Multiple Constraints," in Proc. of Neural Information Processing Systems (NeurIPS), Dec. 2023.
+
 - Junseo Lee, Jaeseok Heo, **Dohyeong Kim**, Gunmin Lee, and Songhwai Oh, "Dual Variable Actor-Critic for Adaptive Safe Reinforcement Learning," in Proc. of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Oct. 2023.
 
 - Hogun Kee, Minjae Kang, **Dohyeong Kim**, Jaegoo Choy, and Songhwai Oh, "SDF-Based Graph Convolutional Q-Networks for Rearrangement of Multiple Objects," in Proc of the IEEE International Conference on Robotics and Automation (ICRA), May 2023.
