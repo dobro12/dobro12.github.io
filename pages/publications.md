@@ -5,7 +5,12 @@ permalink: /publications/
 weight: 1
 ---
 
-&nbsp; 
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+</head>
 
 ## Publications
 
@@ -13,9 +18,15 @@ weight: 1
 ### International Journal
 
 - **Dohyeong Kim** and Songhwai Oh, ["Efficient Off-Policy Safe Reinforcement Learning Using Trust Region Conditional Value at Risk,"](https://ieeexplore.ieee.org/document/9802647) IEEE Robotics and Automation Letters, vol. 7, no. 3, pp. 7644-7651, Jul. 2022.
-<button name="button" onclick="https://arxiv.org/abs/2312.00342">arXiv</button>
-<button name="button" onclick="https://youtu.be/gsen1LfWSkY?si=f5cc8cma-WiQXLLg">Video</button>
-<button name="button" onclick="https://github.com/rllab-snu/Off-Policy-TRC">Code</button>
+<a class="btn btn-primary" href="https://arxiv.org/abs/2312.00342">
+    <i class="fas fa-info-circle"></i>arXiv
+</a>
+<a class="btn btn-primary" href="https://youtu.be/gsen1LfWSkY?si=f5cc8cma-WiQXLLg">
+    <i class="fas fa-info-circle"></i>Video
+</a>
+<a class="btn btn-primary" href="https://github.com/rllab-snu/Off-Policy-TRC">
+    <i class="fas fa-info-circle"></i>Code
+</a>
 
 - **Dohyeong Kim** and Songhwai Oh, ["TRC: Trust Region Conditional Value at Risk for Safe Reinforcement Learning,"](https://ieeexplore.ieee.org/document/9677982) IEEE Robotics and Automation Letters, vol. 7, no. 2, pp. 2621-2628, Apr. 2022.
 <button name="button" onclick="https://arxiv.org/abs/2312.00344">arXiv</button>
@@ -66,3 +77,7 @@ weight: 1
 - Gunmin Lee*, **Dohyeong Kim**\*, Wooseok Oh, Kyungjae Lee, and Songhwai Oh, ["MixGAIL: Autonomous Driving Using Demonstrations with Mixed Qualities,"](https://ieeexplore.ieee.org/document/9341104) in Proc. of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Oct. 2020.
 <button name="button" onclick="https://rllab.snu.ac.kr/publications/papers/2020_iros_mixgail.pdf">Paper</button>
 <button name="button" onclick="https://youtu.be/4Ozcn9T6RRM?si=5Tyqrz4T3BQ06ZnB">Video</button>
+
+<a href="http://example.com/" class="btn btn-primary">
+    <i class="fas fa-info-circle"></i> Click Me
+</a>
