@@ -30,6 +30,11 @@ weight: 1
 ---
 ### International Conference
 
+- **Dohyeong Kim**, Taehyun Cho, Seungyub Han, Hojun Chung, Kyungjae Lee, and Songhwai Oh, "Spectral-Risk Safe Reinforcement Learning with Convergence Guarantees," in Proc. of Neural Information Processing Systems (NeurIPS), Dec. 2024.
+<a class="btn btn-info" href="https://arxiv.org/abs/2405.18698"><i class="fas fa-file-alt"></i> arXiv</a>
+
+- Hojun Chung, Junseo Lee, Minsoo Kim, **Dohyeong Kim**, and Songhwai Oh, "Adversarial Environment Design via Regret-Guided Diffusion Models," in Proc. of Neural Information Processing Systems (NeurIPS), Dec. 2024. (Spotlight 🌟)
+
 - **Dohyeong Kim**, Kyungjae Lee, and Songhwai Oh, ["Trust Region-Based Safe Distributional Reinforcement Learning for Multiple Constraints,"](https://openreview.net/forum?id=q9WMXjUxxT) in Proc. of Neural Information Processing Systems (NeurIPS), Dec. 2023.
 <a href="https://rllab-snu.github.io/projects/SDAC/doc.html" class="btn btn-primary">
     <i class="fas fa-project-diagram"></i> Project Page
